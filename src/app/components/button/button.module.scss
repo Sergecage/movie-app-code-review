@@ -1,13 +1,20 @@
-$button-box-shadow:
-  0px 3px 5px rgba(0, 0, 0, 0.4),
+$button-box-shadow: // I think it's better use onliner in box-shadow
+  0px 3px 5px rgba(0, 0, 0, 0.4), // $button-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
   0px 1px 18px rgba(0, 0, 0, 0.24),
   0px 6px 10px rgba(0, 0, 0, 0.28);
+// I think it's better to use rem intead of px , as rem provide better responsiveness
+// We also should defined variables
+
+/*: root {
+--blue: #007bff;
+--white: #fff;
+}*/
 
 .button {
-  width: 207px;
+  width: 207px; //12.9rem
   height: 36px;
-  color: var(--blue);
-  background: var(--white);
+  color: var(--blue); // this variable doesn't defined
+  background: var(--white); // this variable doesn't defined
   box-shadow: $button-box-shadow;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -18,7 +25,7 @@ $button-box-shadow:
   transition: border-color 0.25s;
 
   &:hover {
-    border-color: var(--blue);
+    border-color: var(--blue); // this variable doesn't defined
   }
   &:focus,
   &:focus-visible {

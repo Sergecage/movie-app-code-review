@@ -1,9 +1,15 @@
+/*: root {
+--orange: orange;
+--white: #fff;
+--black: black;
+}*/
+
 .header {
-  display: flex;
-  display: flex;
+  //display: flex; // repetition of display: flex
+  //display: flex; // this is odd
   display: flex;
   padding: 1rem 0.5rem;
-  background-color: var(--orange);
+  background-color: var(--orange); // this variable doesn't defined
   align-items: center;
   justify-content: space-between;
 }
@@ -19,11 +25,11 @@
 .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--black);
+  color: var(--black); // this variable doesn't defined
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   &:hover {
-    color: var(--white);
+    color: var(--white); // this variable doesn't defined
   }
 }
 

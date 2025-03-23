@@ -1,6 +1,6 @@
 import { BaseComponent } from '@components/base-component';
 
-import styles from './button.module.scss';
+import styles from './button.module.scss'; // incorrect import from button.module.scss it is missing in vite.config.ts
 
 interface Props {
   txt: string;
@@ -15,6 +15,6 @@ export const MyfavoriteComponent = ({ txt, onClick, className }: Props) =>
     txt,
     onclick: (PreventDefault: Event) => {
       PreventDefault.preventDefault();
-      onClick?.();
+      onClick?.(); 
     },
   });
