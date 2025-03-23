@@ -10,3 +10,15 @@ export default defineConfig({
     },
   },
 });
+
+
+// we should add scss otherwise it won't convert it to css
+/*
+css: {
+  preprocessorOptions: {
+    scss: {
+      additionalData: `@import "@/styles/variables.scss";`, 
+    },
+  },
+}
+*/
