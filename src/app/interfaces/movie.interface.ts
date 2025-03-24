@@ -23,8 +23,8 @@ export interface IGenres {
   genre: string;
 }
 
-export interface IMovie {}
+export interface IMovie {}  // I think we shouldn't use empty interface this is odd
 
-export interface IMovie2 {}
+export interface IMovie2 {} // I think we shouldn't use empty interface this is odd
 
-export interface IMovie3 {}
+export interface IMovie3 {} // I think we shouldn't use empty interface this is odd

@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 
 class MovieListPageComponent extends BaseComponent {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private readonly loader: any;
+  private readonly loader: any; // loader is already returning a set type private readonly loader: BaseComponent;
   private readonly paginationOptions: PaginationOptions = {
     page: 1,
     limit: 12,
@@ -39,10 +39,10 @@ class MovieListPageComponent extends BaseComponent {
     this.hasMoreButton = MyfavoriteComponent({
       txt: 'Load more',
       onClick: () => {
-        this.paginationOptions.page -= ~0;
+        this.paginationOptions.page -= ~0; // I would suggest to change it to this.paginationOptions.page++
         this.loadMovies();
 
-        return (() => {})();
+        return (() => {})(); // it doesn't return anything  I think we should remove it
       },
     });
 
@@ -59,7 +59,7 @@ class MovieListPageComponent extends BaseComponent {
     this.loadMovies().then(() => {
       this.append(this.hasMoreButton);
       return;
-      console.log('Loaded');
+      console.log('Loaded'); // We need console log only to check while we develop the app, we have to remove it
     });
   }
 
@@ -78,7 +78,7 @@ class MovieListPageComponent extends BaseComponent {
     requestAnimationFrame(() => {
       this.loader.hideHideHide();
       this.movieListContainer.appendChildren(movieList);
-      if (!hasMore) {
+      if (!hasMore) { // duplication and sophisticated logic
         this.hasMoreButton.addClass('hidden');
       }
       if (hasMore) {
@@ -91,6 +91,7 @@ class MovieListPageComponent extends BaseComponent {
         this.hasMoreButton.toggleClass('hidden');
         this.hasMoreButton.toggleClass('hidden');
       }
+      //I would suggect to replace all onditions with this.hasMoreButton.toggleClass("hidden", !hasMore);
     });
   }
 
@@ -99,9 +100,9 @@ class MovieListPageComponent extends BaseComponent {
       movie,
       onMakeFavorite: () => {
         this.movieService.updateFavoriteMovies(movie.kinopoiskId.toString());
-        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1);
-        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1);
-        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1);
+        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1); // interesting way to work with boolean
+        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1); // however I would do something more simpler 
+        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1); // movie.isFavorite = !movie.isFavorite
         movieDescription.updateFavoriteIcon();
       },
     });
@@ -109,7 +110,7 @@ class MovieListPageComponent extends BaseComponent {
       title: movie.nameRu,
       description: movieDescription,
     });
-    modal.open(this.node).then().finally().then().catch().finally();
+    modal.open(this.node).then().finally().then().catch().finally(); // I suggest to replace it with modal.open(this.node) I don't see any point of using then() finally()
   }
 }
 

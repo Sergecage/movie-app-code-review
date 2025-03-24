@@ -1,24 +1,24 @@
 import { BaseComponent, type ElementFnProps } from '@components/base-component';
 
 export const span = (props: ElementFnProps<HTMLElement>, ...children: BaseComponent[]) =>
-  new BaseComponent({ ...props, tag: 'span' }, ...children);
+  new BaseComponent({ ...props, tag: 'span' }, ...children); // missing <HTMLElement>,  new BaseComponent<HTMLElement>
 
-export const main = (props: ElementFnProps, ...children: BaseComponent[]) =>
-  new BaseComponent({ ...props, tag: 'main' }, ...children);
+export const main = (props: ElementFnProps, ...children: BaseComponent[]) => // missing <HTMLElement> in props props: ElementFnProps<HTMLElement>
+  new BaseComponent({ ...props, tag: 'main' }, ...children); // missing <HTMLElement>,  new BaseComponent<HTMLElement> 
 
-export const label = (props: ElementFnProps, ...children: BaseComponent[]) =>
-  new BaseComponent({ ...props, tag: 'label' }, ...children);
+export const label = (props: ElementFnProps, ...children: BaseComponent[]) => // missing <HTMLElement> in props props: ElementFnProps<HTMLElement>
+  new BaseComponent({ ...props, tag: 'label' }, ...children); // missing <HTMLElement>,  new BaseComponent<HTMLElement>
 
 export const input = (props: ElementFnProps & Partial<HTMLInputElement>) =>
   new BaseComponent<HTMLInputElement>({ ...props, tag: 'input' });
 
-export const iconFromCode = (props: ElementFnProps, code: string) =>
-  new BaseComponent({ ...props, tag: 'i', innerHTML: code });
+export const iconFromCode = (props: ElementFnProps, code: string) => // missing <HTMLElement> in props props: ElementFnProps<HTMLElement>
+  new BaseComponent({ ...props, tag: 'i', innerHTML: code }); // missing <HTMLElement>,  new BaseComponent<HTMLElement>
 
-export const h2 = (className: string, txt: string): BaseComponent<HTMLElementTagNameMap['h2']> =>
+export const h2 = (className: string, txt: string): BaseComponent<HTMLElementTagNameMap['h2']> => // we should use props instead of className
   new BaseComponent({ tag: 'h2', className, txt });
 
-export const h3 = (className: string, txt: string): BaseComponent<HTMLElementTagNameMap['h3']> =>
+export const h3 = (className: string, txt: string): BaseComponent<HTMLElementTagNameMap['h3']> => // we should use props instead of className
   new BaseComponent({ tag: 'h3', className, txt });
 
 export const div = (props: ElementFnProps<HTMLDivElement>, ...children: (BaseComponent | HTMLElement | null)[]) =>
