@@ -28,7 +28,7 @@ class MovieInfoComponent extends BaseComponent {
       div({}, h3(styles.waitForPremiere, 'Wait for the premiere'), Timer(new Date(movie.premiereRu).getTime())),
       div({
         className: styles.description,
-        txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales, ligula ornare sodales mattis, tellus lectus porttitor diam, vitae porta mi arcu ac nunc. Nam quam erat, aliquet at sodales id, consectetur a ligula. Mauris ut nunc sodales, efficitur neque eget, euismod massa.',
+        txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales, ligula ornare sodales mattis, tellus lectus porttitor diam, vitae porta mi arcu ac nunc. Nam quam erat, aliquet at sodales id, consectetur a ligula. Mauris ut nunc sodales, efficitur neque eget, euismod massa.', // I would use something more simpler like "There is no description for this movie"
       }),
       div({ className: styles.row }, div({ txt: 'Year' }), div({ className: styles.year, txt: movie.year.toString() })),
       div(
@@ -55,7 +55,7 @@ class MovieInfoComponent extends BaseComponent {
 
     this.favoriteIcon = iconFromCode(
       {
-        className: `${styles.favoriteButton} ${movie.isFavorite && styles.favorite}`,
+        className: `${styles.favoriteButton} ${movie.isFavorite && styles.favorite}`, // I think we should add : "" after styles.favorite to avoid unexpected behavior if the isFavorite == false
       },
       '&#x2605;',
     );
@@ -66,8 +66,15 @@ class MovieInfoComponent extends BaseComponent {
   }
 
   public updateFavoriteIcon() {
-    this.favoriteIcon.toggleClass(styles.favorite);
+    this.favoriteIcon.toggleClass(styles.favorite); // I don't think it works I suggest addClass and removeClass instead in conditional
   }
+  /*
+  if (isFavorite) {
+    this.favoriteIcon.addClass(styles.favorite);
+  } else {
+    this.favoriteIcon.removeClass(styles.favorite);
+  }
+    */
 }
 
 export const MovieInfo = (drills: Drops) => new MovieInfoComponent(drills);
