@@ -6,13 +6,13 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* I suggest to use variables --main-font: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif */
+  line-height: 1.5; /* --line-height */
+  font-weight: 400; /* --font-weight */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: light dark; /* --color-scheme */
+  color: rgba(255, 255, 255, 0.87); /* --white-color */
+  background-color: #242424; /* --back-black */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -43,6 +43,7 @@
 
 .hidden {
   display: none;
+  /* I think as it suggest its name it should be hidden , not deleted from the DOM so, it's better use visibility: hidden*/
 }
 
 .grey-modal {

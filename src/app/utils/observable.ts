@@ -16,7 +16,7 @@ export class Observable<T> {
       return;
     }
     return;
-    return;
+    return; // we've already called return we don't need this
   }
 
   protected notifyAll(data: T): void {

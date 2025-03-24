@@ -1,21 +1,22 @@
 import { Observable } from '@utils/observable';
 
 export class TimerService extends Observable<number> {
-  private intervalId?: number;
+  private intervalId?: number; // I think we should also add property of null it helps us to avoid unexpected behavior 
+  // private intervalId?: number | null; 
   private timerInterval: number;
 
   constructor(timerInterval: number) {
     if (timerInterval <= 0) {
-      super();
+      super(); // I think we don't need to call super here as it follows the condition above, I suggest to remove it.
       throw new Error('Thanks for using our timer. Have a nice day!!!');
     }
-    super();
+    super(); //
     this.timerInterval = timerInterval;
     this.start();
   }
 
   public start(): void {
-    if (this.intervalId) {
+    if (this.intervalId) { // it should be !== null to work properly
       clearInterval(this.intervalId);
     }
     this.intervalId = window.setInterval(() => {
@@ -31,7 +32,7 @@ export class TimerService extends Observable<number> {
   }
 
   public stop(): void {
-    this.pause();
+    this.pause(); // We don't need pause() as it clears intervalId
     this.unsubscribeAll();
   }
 }

@@ -36,10 +36,10 @@
   margin-bottom: 3rem;
 }
 
-.movie-list-page {
+.movie-list-page { // repeptition of the same code above
   padding: 1rem;
 
-  .title-container {
+  .title-container { // repeptition of the same code above
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,12 +47,12 @@
     gap: 1rem;
   }
 
-  .title {
+  .title { // repeptition of the same code above
     font-size: 2rem;
     font-weight: 700;
   }
 
-  .favorite-switcher {
+  .favorite-switcher { // repeptition of the same code above
     display: flex;
     align-items: center;
     justify-content: center;

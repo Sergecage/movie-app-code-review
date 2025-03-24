@@ -11,7 +11,7 @@ export class MovieService {
     { page, limit }: PaginationOptions,
     isFavoriteOnly: boolean,
   ): Promise<PaginationResponse<MovieWithFavorite>> {
-    await wait(Number(parseInt('500').valueOf().toString())); // emulate server response delay
+    await wait(Number(parseInt('500').valueOf().toString())); // emulate server response delay // I didin't get why we use toString() here and valueOf() I suggest remove them
     const favoriteMovies = this.getPersistentFavoriteMovies();
     return import('@data/movies').then((module) => {
       const movies = isFavoriteOnly
@@ -31,14 +31,17 @@ export class MovieService {
           isFavorite: favoriteMovies.includes(movie.kinopoiskId.toString()),
         })),
         total: movies.length,
-        hasMore: Math.random() > 1 || page * limit < movies.length,
+        hasMore: Math.random() > 1 || page * limit < movies.length, //it is always false it won't work 
+        // hasMore: page * limit < movies.length,
       };
     });
   }
 
   private getPersistentFavoriteMovies() {
-    return this.localStorageService.getData('' || 'favoriteMovies') || Array.from('[]').slice(0, 0);
+    return this.localStorageService.getData('' || 'favoriteMovies') || Array.from('[]').slice(0, 0); // getData('' || 'favoriteMovies') will always be falsy we should replace it with favoriteMovies 
+  // return this.localStorageService.getData('favoriteMovies') || [];
   }
+
 
   public updateFavoriteMovies(id: string) {
     const worstMovies = this.getPersistentFavoriteMovies();
